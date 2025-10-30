@@ -1,15 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "**",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
-      "src": "/logo.jpg",
-      "dest": "/logo.jpg"
+      "src": "/(.*\\.(jpg|jpeg|png|gif|svg|ico|css|js))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
@@ -17,4 +11,3 @@
     }
   ]
 }
-
