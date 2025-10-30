@@ -400,6 +400,29 @@
             50% { transform: translate(-50px, -50px); }
         }
         
+        /* Footer with same background as motivation section */
+        footer.footer-gradient {
+            background: linear-gradient(135deg, #213886 0%, #2A4AA0 50%, #213886 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer.footer-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        footer.footer-gradient > * {
+            position: relative;
+            z-index: 1;
+        }
+        
         /* Mobile Menu */
         .mobile-menu {
             transform: translateX(-100%);
@@ -531,16 +554,6 @@
                 padding: 2rem 1rem 3rem 1rem;
             }
             
-            .hero-section .inline-block span {
-                font-size: 0.65rem !important;
-                padding: 0.4rem 0.75rem !important;
-                line-height: 1.5 !important;
-                display: inline-block;
-                white-space: normal;
-                max-width: 90vw;
-                text-align: center;
-            }
-            
             .hero-section h1 {
                 font-size: 2.5rem !important;
                 line-height: 1.2;
@@ -552,6 +565,10 @@
             
             .hero-section p br {
                 display: none;
+            }
+            
+            .motivation-star {
+                font-size: 4rem !important;
             }
             
             .modern-cta {
@@ -585,18 +602,16 @@
                 background-attachment: scroll;
             }
             
-            .hero-section .inline-block span {
-                font-size: 0.6rem !important;
-                padding: 0.35rem 0.65rem !important;
-                max-width: 95vw;
-            }
-            
             .hero-section h1 {
                 font-size: 2rem !important;
             }
             
             .hero-section p {
                 font-size: 1.125rem !important;
+            }
+            
+            .motivation-star {
+                font-size: 3rem !important;
             }
             
             .modern-cta {
@@ -821,7 +836,7 @@
                     <div class="h-64 image-carousel" data-carousel="feature3">
                         <div class="carousel-images">
                             <div class="carousel-image"><img src="tr.png" alt="تركيز على التواصل 1" class="w-full h-full object-cover"></div>
-                            <div class="carousel-image"><img src="tr.png" alt="تركيز على التواصل 2" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="mm.png" alt="تركيز على التواصل 2" class="w-full h-full object-cover"></div>
                         </div>
                         <button class="carousel-arrow next" onclick="moveCarousel('feature3', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
                         <button class="carousel-arrow prev" onclick="moveCarousel('feature3', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
@@ -1268,7 +1283,7 @@
     <section class="motivation-section py-32 text-white text-center relative">
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-5xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
-                <div class="text-8xl mb-10">🌟</div>
+                <div class="motivation-star text-8xl mb-10">🌟</div>
                 <h2 class="text-4xl md:text-6xl font-black mb-10 leading-tight">
                     "لنجعل اللغة العربية<br>لغة العالم!"
                 </h2>
@@ -1344,7 +1359,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-gray-900 to-black text-white py-16">
+    <footer class="footer-gradient text-white py-16">
         <div class="container mx-auto px-6">
             <!-- Top Section -->
             <div class="grid md:grid-cols-3 gap-12 mb-12">
@@ -1354,7 +1369,7 @@
                         <img src="logo.jpg" alt="ATTC - وكالة الأهرام للسفر والسياحة" class="h-16 w-auto">
                     </div>
                     <h3 class="text-xl font-black mb-4 text-[#F7A716]">وكالة الأهرام للسفر والسياحة</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">
+                    <p class="text-white leading-relaxed mb-4">
                         رائدة في تقديم برامج تعليم اللغة العربية بالتعاون مع جامعة أم القرى في مكة المكرمة
                     </p>
                 </div>
@@ -1364,27 +1379,27 @@
                     <h3 class="text-xl font-black mb-6 text-[#F7A716]">روابط سريعة</h3>
                     <ul class="space-y-3">
                         <li>
-                            <a href="#hero" class="text-gray-400 hover:text-[#F7A716] transition-colors flex items-center gap-2">
+                            <a href="#hero" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
                                 <span>←</span> الرئيسية
                             </a>
                         </li>
                         <li>
-                            <a href="#features" class="text-gray-400 hover:text-[#F7A716] transition-colors flex items-center gap-2">
+                            <a href="#features" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
                                 <span>←</span> المميزات
                             </a>
                         </li>
                         <li>
-                            <a href="#journey" class="text-gray-400 hover:text-[#F7A716] transition-colors flex items-center gap-2">
+                            <a href="#journey" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
                                 <span>←</span> رحلة المتعلم
                             </a>
                         </li>
                         <li>
-                            <a href="#pricing" class="text-gray-400 hover:text-[#F7A716] transition-colors flex items-center gap-2">
+                            <a href="#pricing" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
                                 <span>←</span> الأسعار
                             </a>
                         </li>
                         <li>
-                            <a href="#contact" class="text-gray-400 hover:text-[#F7A716] transition-colors flex items-center gap-2">
+                            <a href="#contact" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
                                 <span>←</span> تواصل معنا
                             </a>
                         </li>
@@ -1395,15 +1410,15 @@
                 <div>
                     <h3 class="text-xl font-black mb-6 text-[#F7A716]">تواصل معنا</h3>
                     <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-gray-400">
+                        <li class="flex items-start gap-3 text-white">
                             <span class="text-[#F7A716] text-xl">📞</span>
                             <div>
                                 <a href="tel:+966920019190" class="hover:text-[#F7A716] transition-colors">
-                                    +966920019190
+                                    966920019190+
                                 </a>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-gray-400">
+                        <li class="flex items-start gap-3 text-white">
                             <span class="text-[#F7A716] text-xl">📧</span>
                             <div>
                                 <a href="mailto:CC@ATTC.SA" class="hover:text-[#F7A716] transition-colors break-all">
@@ -1411,7 +1426,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-gray-400">
+                        <li class="flex items-start gap-3 text-white">
                             <span class="text-[#F7A716] text-xl">📍</span>
                             <div>المملكة العربية السعودية</div>
                         </li>
@@ -1425,13 +1440,13 @@
             </div>
             
             <!-- Divider -->
-            <div class="border-t border-gray-800 my-8"></div>
+            <div class="border-t border-white/20 my-8"></div>
             
             <!-- Bottom Section -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                 <!-- Copyright -->
                 <div class="text-center">
-                    <p class="text-gray-400">
+                    <p class="text-white">
                         © 2025 <span class="text-white font-bold">وكالة الأهرام للسفر والسياحة</span> - جميع الحقوق محفوظة
                     </p>
                 </div>
