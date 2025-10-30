@@ -398,12 +398,19 @@
         
         /* Mobile Menu */
         .mobile-menu {
-            transform: translateX(100%);
+            transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
         }
         
         .mobile-menu.active {
             transform: translateX(0);
+        }
+        
+        @media (max-width: 480px) {
+            .header img {
+                height: 3.5rem !important;
+            }
         }
         
         /* Responsive adjustments */
@@ -507,13 +514,13 @@
         </nav>
         
         <!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 left-0 w-full h-screen bg-white z-40 lg:hidden p-8">
-            <button onclick="toggleMobileMenu()" class="absolute top-6 left-6 text-gray-700">
+        <div class="mobile-menu fixed top-0 right-0 w-full h-screen bg-white z-40 lg:hidden p-8">
+            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-700">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <div class="flex flex-col gap-6 mt-16">
+            <div class="flex flex-col gap-6 mt-16 text-right">
                 <a href="#hero" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">الرئيسية</a>
                 <a href="#features" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">المميزات</a>
                 <a href="#journey" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">الرحلة</a>
