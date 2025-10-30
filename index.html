@@ -567,6 +567,18 @@
                 display: none;
             }
             
+            /* Hero Badge Responsive */
+            .hero-section .inline-block span[data-lang-key="hero-badge"] {
+                font-size: 0.75rem !important;
+                padding: 0.5rem 1rem !important;
+                line-height: 1.4 !important;
+                display: inline-block;
+                white-space: normal;
+                max-width: 90vw;
+                text-align: center;
+                word-wrap: break-word;
+            }
+            
             .motivation-star {
                 font-size: 4rem !important;
                 line-height: 1.3 !important;
@@ -618,6 +630,14 @@
                 font-size: 1.125rem !important;
             }
             
+            /* Hero Badge Extra Small Screens */
+            .hero-section .inline-block span[data-lang-key="hero-badge"] {
+                font-size: 0.65rem !important;
+                padding: 0.4rem 0.75rem !important;
+                line-height: 1.3 !important;
+                max-width: 95vw;
+            }
+            
             .motivation-star {
                 font-size: 3rem !important;
                 line-height: 1.3 !important;
@@ -645,6 +665,26 @@
                 padding: 0 !important;
             }
         }
+        
+        @media (max-width: 640px) {
+            /* Hero Badge Medium Small Screens */
+            .hero-section .inline-block span[data-lang-key="hero-badge"] {
+                font-size: 0.7rem !important;
+                padding: 0.45rem 0.9rem !important;
+                line-height: 1.35 !important;
+                max-width: 92vw;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            /* Hero Badge Very Small Screens */
+            .hero-section .inline-block span[data-lang-key="hero-badge"] {
+                font-size: 0.55rem !important;
+                padding: 0.3rem 0.6rem !important;
+                line-height: 1.25 !important;
+                max-width: 98vw;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -660,13 +700,23 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="#hero" class="text-gray-700 hover:text-[#213886] font-bold transition-colors">الرئيسية</a>
-                    <a href="#features" class="text-gray-700 hover:text-[#213886] font-bold transition-colors">المميزات</a>
-                    <a href="#journey" class="text-gray-700 hover:text-[#213886] font-bold transition-colors">الرحلة</a>
-                    <a href="#pricing" class="text-gray-700 hover:text-[#213886] font-bold transition-colors">الأسعار</a>
-                    <a href="#contact" class="modern-cta px-6 py-3 rounded-full text-white font-bold text-sm">
+                    <a href="#hero" class="text-gray-700 hover:text-[#213886] font-bold transition-colors" data-lang-key="nav-home">الرئيسية</a>
+                    <a href="#features" class="text-gray-700 hover:text-[#213886] font-bold transition-colors" data-lang-key="nav-features">المميزات</a>
+                    <a href="#journey" class="text-gray-700 hover:text-[#213886] font-bold transition-colors" data-lang-key="nav-journey">الرحلة</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-[#213886] font-bold transition-colors" data-lang-key="nav-pricing">الأسعار</a>
+                    <a href="#contact" class="modern-cta px-6 py-3 rounded-full text-white font-bold text-sm" data-lang-key="nav-register">
                         سجّل الآن
                     </a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-2 border-r-2 border-gray-300 pr-6">
+                        <button onclick="switchLanguage('ar')" id="lang-ar" class="lang-btn px-3 py-1.5 rounded-lg font-bold transition-all bg-[#213886] text-white">
+                            AR
+                        </button>
+                        <button onclick="switchLanguage('en')" id="lang-en" class="lang-btn px-3 py-1.5 rounded-lg font-bold transition-all text-gray-700 hover:bg-gray-100">
+                            EN
+                        </button>
+                    </div>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -686,13 +736,23 @@
                 </svg>
             </button>
             <div class="flex flex-col gap-6 mt-16 text-right">
-                <a href="#hero" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">الرئيسية</a>
-                <a href="#features" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">المميزات</a>
-                <a href="#journey" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">الرحلة</a>
-                <a href="#pricing" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700">الأسعار</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="modern-cta inline-block px-8 py-4 rounded-full text-gray-900 font-bold text-center mt-4">
+                <a href="#hero" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700" data-lang-key="nav-home">الرئيسية</a>
+                <a href="#features" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700" data-lang-key="nav-features">المميزات</a>
+                <a href="#journey" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700" data-lang-key="nav-journey">الرحلة</a>
+                <a href="#pricing" onclick="toggleMobileMenu()" class="text-2xl font-bold text-gray-700" data-lang-key="nav-pricing">الأسعار</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="modern-cta inline-block px-8 py-4 rounded-full text-gray-900 font-bold text-center mt-4" data-lang-key="nav-register">
                     سجّل الآن
                 </a>
+                
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-3 justify-center mt-8 pt-8 border-t border-gray-200">
+                    <button onclick="switchLanguage('ar')" id="lang-ar-mobile" class="lang-btn px-6 py-3 rounded-lg font-bold transition-all bg-[#213886] text-white text-xl">
+                        عربي
+                    </button>
+                    <button onclick="switchLanguage('en')" id="lang-en-mobile" class="lang-btn px-6 py-3 rounded-lg font-bold transition-all text-gray-700 bg-gray-100 text-xl">
+                        English
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -712,32 +772,32 @@
         <div class="container mx-auto px-6 text-center text-white hero-content py-24">
             <div data-aos="fade-down" data-aos-duration="1000">
                 <div class="inline-block mb-6">
-                    <span class="bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-sm font-bold border border-white/30">
+                    <span class="bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-sm font-bold border border-white/30" data-lang-key="hero-badge">
                         🌟 حصري بالتعاون مع جامعة أم القرى
                     </span>
                 </div>
             </div>
             
-            <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="text-5xl md:text-7xl font-black mb-8 leading-tight">
+            <h1 id="hero-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="text-5xl md:text-7xl font-black mb-8 leading-tight">
                 تعلم اللغة العربية<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F7A716] via-[#F7A716] to-[#F7A716]">
                     في مكة المكرمة
                 </span>
             </h1>
             
-            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="text-xl md:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p id="hero-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="text-xl md:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
                 رحلة تجمع بين العلم، والثقافة، والروحانية<br>
                 بشهادة معتمدة من جامعة أم القرى
             </p>
             
             <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" class="flex flex-wrap items-center justify-center gap-4">
                 <a href="#contact" class="modern-cta px-10 py-5 text-xl font-black text-gray-900 rounded-full inline-flex items-center gap-3">
-                    <span>سجّل الآن</span>
+                    <span data-lang-key="hero-cta-register">سجّل الآن</span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/>
                     </svg>
                 </a>
-                <a href="#features" class="bg-white/10 backdrop-blur-md border-2 border-white/30 px-10 py-5 text-xl font-black text-white rounded-full hover:bg-white/20 transition-all">
+                <a href="#features" class="bg-white/10 backdrop-blur-md border-2 border-white/30 px-10 py-5 text-xl font-black text-white rounded-full hover:bg-white/20 transition-all" data-lang-key="hero-cta-learn">
                     اعرف المزيد
                 </a>
             </div>
@@ -748,25 +808,25 @@
                     <div class="text-4xl font-black text-[#F7A716]">
                         <span class="counter" data-target="28">0</span>+
                     </div>
-                    <div class="text-sm mt-2 font-semibold">عام خبرة</div>
+                    <div class="text-sm mt-2 font-semibold" data-lang-key="stat-1">عام خبرة</div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                     <div class="text-4xl font-black text-[#F7A716]">
                         <span class="counter" data-target="240">0</span>
                     </div>
-                    <div class="text-sm mt-2 font-semibold">ساعة تعليمية</div>
+                    <div class="text-sm mt-2 font-semibold" data-lang-key="stat-2">ساعة تعليمية</div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                     <div class="text-4xl font-black text-[#F7A716]">
                         <span class="counter" data-target="6">0</span>
                     </div>
-                    <div class="text-sm mt-2 font-semibold">مستويات دراسية</div>
+                    <div class="text-sm mt-2 font-semibold" data-lang-key="stat-3">مستويات دراسية</div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                     <div class="text-4xl font-black text-[#F7A716]">
                         <span class="counter" data-target="100">0</span>%
                     </div>
-                    <div class="text-sm mt-2 font-semibold">شهادة معتمدة</div>
+                    <div class="text-sm mt-2 font-semibold" data-lang-key="stat-4">شهادة معتمدة</div>
                 </div>
             </div>
         </div>
@@ -776,8 +836,8 @@
     <section id="features" class="py-24 bg-gradient-to-b from-white to-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="section-title" data-aos="fade-up">لماذا تختار هذا البرنامج؟</h2>
-                <p class="text-2xl text-gray-700 mt-6 max-w-3xl mx-auto font-bold" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="section-title" data-aos="fade-up" data-lang-key="features-title">لماذا تختار هذا البرنامج؟</h2>
+                <p class="text-2xl text-gray-700 mt-6 max-w-3xl mx-auto font-bold" data-aos="fade-up" data-aos-delay="200" data-lang-key="features-subtitle">
                     نقدم لك تجربة تعليمية فريدة تجمع بين الأصالة والحداثة
                 </p>
             </div>
@@ -810,8 +870,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">تجربة تعليمية عالمية</h3>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center">في أقدس بقاع الأرض حيث تلتقي الروحانية بالمعرفة</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="feature-1-title">تجربة تعليمية عالمية</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center" data-lang-key="feature-1-desc">في أقدس بقاع الأرض حيث تلتقي الروحانية بالمعرفة</p>
                     </div>
                 </div>
                 
@@ -842,8 +902,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">شهادة معتمدة</h3>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center">من جامعة أم القرى المرموقة معترف بها عالمياً</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="feature-2-title">شهادة معتمدة</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center" data-lang-key="feature-2-desc">من جامعة أم القرى المرموقة معترف بها عالمياً</p>
                     </div>
                 </div>
                 
@@ -859,8 +919,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature3', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature3', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">تركيز على التواصل</h3>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center">تطوير مهارات التواصل العملي في الحياة اليومية</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="feature-3-title">تركيز على التواصل</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center" data-lang-key="feature-3-desc">تطوير مهارات التواصل العملي في الحياة اليومية</p>
                     </div>
                 </div>
                 
@@ -876,8 +936,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature4', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature4', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">تعليم متكامل</h3>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center">دمج بين التعليم الحضوري والرقمي لأفضل النتائج</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="feature-4-title">تعليم متكامل</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center" data-lang-key="feature-4-desc">دمج بين التعليم الحضوري والرقمي لأفضل النتائج</p>
                     </div>
                 </div>
                 
@@ -893,8 +953,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature5', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature5', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">إشراف أكاديمي</h3>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center">من نخبة الخبراء والأساتذة المتخصصين</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="feature-5-title">إشراف أكاديمي</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center" data-lang-key="feature-5-desc">من نخبة الخبراء والأساتذة المتخصصين</p>
                     </div>
                 </div>
                 
@@ -910,8 +970,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature6', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature6', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">خبرة عريقة</h3>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center">أكثر من 50 عاماً من التميز الأكاديمي والتعليمي</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="feature-6-title">خبرة عريقة</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center" data-lang-key="feature-6-desc">أكثر من 50 عاماً من التميز الأكاديمي والتعليمي</p>
                     </div>
                 </div>
             </div>
@@ -922,8 +982,8 @@
     <section id="journey" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="section-title" data-aos="fade-up">رحلة المتعلّم</h2>
-                <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="section-title" data-aos="fade-up" data-lang-key="journey-title">رحلة المتعلّم</h2>
+                <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-lang-key="journey-subtitle">
                     خطوة بخطوة نحو إتقان اللغة العربية
                 </p>
             </div>
@@ -932,48 +992,48 @@
                 <div class="journey-item" data-aos="fade-right" data-aos-delay="100">
                     <div class="journey-number">1</div>
                     <div class="bg-gradient-to-br from-purple-50 to-white rounded-3xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-black text-gray-800 mb-3">اختبار تحديد المستوى</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">نبدأ معك بتقييم شامل لمستواك الحالي لنضعك في المجموعة المناسبة تماماً لقدراتك</p>
+                        <h3 class="text-3xl font-black text-gray-800 mb-3" data-lang-key="journey-1-title">اختبار تحديد المستوى</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed" data-lang-key="journey-1-desc">نبدأ معك بتقييم شامل لمستواك الحالي لنضعك في المجموعة المناسبة تماماً لقدراتك</p>
                     </div>
                 </div>
                 
                 <div class="journey-item" data-aos="fade-right" data-aos-delay="200">
                     <div class="journey-number">2</div>
                     <div class="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-black text-gray-800 mb-3">الانضمام إلى المجموعة التعليمية</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">ستنضم إلى مجموعة من المتعلمين المتحمسين من نفس مستواك من جميع أنحاء العالم</p>
+                        <h3 class="text-3xl font-black text-gray-800 mb-3" data-lang-key="journey-2-title">الانضمام إلى المجموعة التعليمية</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed" data-lang-key="journey-2-desc">ستنضم إلى مجموعة من المتعلمين المتحمسين من نفس مستواك من جميع أنحاء العالم</p>
                     </div>
                 </div>
                 
                 <div class="journey-item" data-aos="fade-right" data-aos-delay="300">
                     <div class="journey-number">3</div>
                     <div class="bg-gradient-to-br from-pink-50 to-white rounded-3xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-black text-gray-800 mb-3">أنشطة تمهيدية عبر المنصة</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">أنشطة تفاعلية وممتعة للتحضير قبل الدروس الحضورية وبناء المعرفة الأساسية</p>
+                        <h3 class="text-3xl font-black text-gray-800 mb-3" data-lang-key="journey-3-title">أنشطة تمهيدية عبر المنصة</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed" data-lang-key="journey-3-desc">أنشطة تفاعلية وممتعة للتحضير قبل الدروس الحضورية وبناء المعرفة الأساسية</p>
                     </div>
                 </div>
                 
                 <div class="journey-item" data-aos="fade-right" data-aos-delay="400">
                     <div class="journey-number">4</div>
                     <div class="bg-gradient-to-br from-green-50 to-white rounded-3xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-black text-gray-800 mb-3">دروس حضورية وتطبيق عملي</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">دروس تفاعلية مباشرة مع أساتذة متخصصين في حرم جامعة أم القرى بمكة المكرمة</p>
+                        <h3 class="text-3xl font-black text-gray-800 mb-3" data-lang-key="journey-4-title">دروس حضورية وتطبيق عملي</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed" data-lang-key="journey-4-desc">دروس تفاعلية مباشرة مع أساتذة متخصصين في حرم جامعة أم القرى بمكة المكرمة</p>
                     </div>
                 </div>
                 
                 <div class="journey-item" data-aos="fade-right" data-aos-delay="500">
                     <div class="journey-number">5</div>
                     <div class="bg-gradient-to-br from-yellow-50 to-white rounded-3xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-black text-gray-800 mb-3">واجبات وأنشطة بعد الدروس</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">تعزيز المهارات من خلال الممارسة المستمرة والتطبيق العملي اليومي</p>
+                        <h3 class="text-3xl font-black text-gray-800 mb-3" data-lang-key="journey-5-title">واجبات وأنشطة بعد الدروس</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed" data-lang-key="journey-5-desc">تعزيز المهارات من خلال الممارسة المستمرة والتطبيق العملي اليومي</p>
                     </div>
                 </div>
                 
                 <div class="journey-item" data-aos="fade-right" data-aos-delay="600">
                     <div class="journey-number">6</div>
                     <div class="bg-gradient-to-br from-purple-50 to-white rounded-3xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-black text-gray-800 mb-3">اختبار نهائي وشهادة معتمدة</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">احصل على شهادة معتمدة دولياً من جامعة أم القرى تؤهلك للمستوى التالي</p>
+                        <h3 class="text-3xl font-black text-gray-800 mb-3" data-lang-key="journey-6-title">احصل على شهادتك المعتمدة</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed" data-lang-key="journey-6-desc">بعد إتمام المستوى بنجاح، تحصل على شهادة معتمدة من جامعة أم القرى المرموقة</p>
                     </div>
                 </div>
             </div>
@@ -984,8 +1044,8 @@
     <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="section-title" data-aos="fade-up">الخدمات الأساسية</h2>
-                <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="section-title" data-aos="fade-up" data-lang-key="services-title">الخدمات الأساسية</h2>
+                <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-lang-key="services-subtitle">
                     نوفر لك كل ما تحتاجه لتجربة تعليمية مريحة ومثمرة
                 </p>
             </div>
@@ -1003,8 +1063,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service1', 0)"></span><span class="carousel-dot" onclick="goToSlide('service1', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">الإقامة</h3>
-                        <p class="text-gray-600 text-center leading-relaxed text-lg">إقامة فاخرة في سكن مجهز بالكامل بالقرب من الحرم المكي</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="service-1-title">الإقامة</h3>
+                        <p class="text-gray-600 text-center leading-relaxed text-lg" data-lang-key="service-1-desc">إقامة فاخرة في سكن مجهز بالكامل بالقرب من الحرم المكي</p>
                     </div>
                 </div>
                 
@@ -1020,8 +1080,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service2', 0)"></span><span class="carousel-dot" onclick="goToSlide('service2', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">الوجبات</h3>
-                        <p class="text-gray-600 text-center leading-relaxed text-lg">وجبتان يوميًا متنوعة ومغذية على طراز البوفيه المفتوح</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="service-2-title">الوجبات</h3>
+                        <p class="text-gray-600 text-center leading-relaxed text-lg" data-lang-key="service-2-desc">وجبتان يوميًا متنوعة ومغذية على طراز البوفيه المفتوح</p>
                     </div>
                 </div>
                 
@@ -1037,8 +1097,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service3', 0)"></span><span class="carousel-dot" onclick="goToSlide('service3', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">النقل</h3>
-                        <p class="text-gray-600 text-center leading-relaxed text-lg">خدمة نقل مريحة ومنظمة بين جميع المواقع طوال البرنامج</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="service-3-title">النقل</h3>
+                        <p class="text-gray-600 text-center leading-relaxed text-lg" data-lang-key="service-3-desc">خدمة نقل مريحة ومنظمة بين جميع المواقع طوال البرنامج</p>
                     </div>
                 </div>
                 
@@ -1054,8 +1114,8 @@
                         <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service4', 0)"></span><span class="carousel-dot" onclick="goToSlide('service4', 1)"></span></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">العمرة والزيارات</h3>
-                        <p class="text-gray-600 text-center leading-relaxed text-lg">جولات موجهة للمواقع المقدسة والتاريخية الإسلامية</p>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4 text-center" data-lang-key="service-4-title">العمرة والزيارات</h3>
+                        <p class="text-gray-600 text-center leading-relaxed text-lg" data-lang-key="service-4-desc">جولات موجهة للمواقع المقدسة والتاريخية الإسلامية</p>
                     </div>
                 </div>
             </div>
@@ -1066,8 +1126,8 @@
     <section id="pricing" class="py-32 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-24">
-                <h2 class="section-title" data-aos="fade-up">الأسعار والخيارات</h2>
-                <p class="text-2xl text-gray-600 mt-8 max-w-3xl mx-auto font-semibold" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="section-title" data-aos="fade-up" data-lang-key="pricing-title">الأسعار والخيارات</h2>
+                <p class="text-2xl text-gray-600 mt-8 max-w-3xl mx-auto font-semibold" data-aos="fade-up" data-aos-delay="200" data-lang-key="pricing-subtitle">
                     اختر الباقة المناسبة لك ولمستواك التعليمي
                 </p>
             </div>
@@ -1077,13 +1137,13 @@
                 <div class="flex flex-col bg-white border-2 border-gray-200 rounded-3xl p-8 hover:border-[#213886] transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
                     <!-- Header -->
                     <div class="text-center pb-8 border-b-2 border-gray-100">
-                        <div class="inline-block bg-gradient-to-r from-blue-50 to-blue-100 text-[#213886] px-6 py-2 rounded-full font-black text-sm mb-6">
+                        <div class="inline-block bg-gradient-to-r from-blue-50 to-blue-100 text-[#213886] px-6 py-2 rounded-full font-black text-sm mb-6" data-lang-key="pricing-basic">
                             الباقة الأساسية
                         </div>
                         <div class="mb-3">
                             <span class="text-6xl font-black text-gray-900">$2300</span>
                         </div>
-                        <div class="text-gray-600 font-bold text-lg">4 أسابيع</div>
+                        <div class="text-gray-600 font-bold text-lg"><span>4</span> <span data-lang-key="pricing-weeks">أسابيع</span></div>
                     </div>
                     
                     <!-- Features -->
@@ -1095,7 +1155,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">80 ساعة تعليمية</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>80</span> <span data-lang-key="pricing-hours">ساعة تعليمية</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1103,7 +1163,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">مستويان دراسيان</span>
+                                <span class="text-gray-700 text-lg font-semibold" data-lang-key="pricing-level">مستويان دراسيان</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1111,7 +1171,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">4 رحلات موجهة</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>4</span> <span data-lang-key="pricing-trips">رحلات موجهة</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1119,7 +1179,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">20 حلقة قرآن</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>20</span> <span data-lang-key="pricing-quran">حلقة قرآن</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1127,14 +1187,14 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">جلستان دراسات إسلامية</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>2</span> <span data-lang-key="pricing-islamic">جلسات دراسات إسلامية</span></span>
                             </li>
                         </ul>
                     </div>
                     
                     <!-- Button -->
                     <div class="pt-6 border-t-2 border-gray-100">
-                        <a href="#contact" class="block text-center bg-white border-2 border-[#213886] text-[#213886] hover:bg-[#213886] hover:text-white py-4 px-6 rounded-xl font-black transition-all text-lg">
+                        <a href="#contact" class="block text-center bg-white border-2 border-[#213886] text-[#213886] hover:bg-[#213886] hover:text-white py-4 px-6 rounded-xl font-black transition-all text-lg" data-lang-key="pricing-choose">
                             اختر هذه الباقة
                         </a>
                     </div>
@@ -1145,19 +1205,19 @@
                     <!-- Popular Badge -->
                     <div class="absolute -top-5 right-1/2 transform translate-x-1/2">
                         <div class="bg-gradient-to-r from-[#F7A716] to-[#F7A716] text-white px-8 py-3 rounded-full font-black text-base shadow-xl whitespace-nowrap">
-                            ⭐ الأكثر شعبية
+                            <span data-lang-key="pricing-most-popular">⭐ الأكثر شعبية</span>
                         </div>
                     </div>
                     
                     <!-- Header -->
                     <div class="text-center pb-8 border-b-2 border-white/20 pt-4">
-                        <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-black text-sm mb-6 text-white">
+                        <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-black text-sm mb-6 text-white" data-lang-key="pricing-advanced">
                             الباقة المتقدمة
                         </div>
                         <div class="mb-3">
                             <span class="text-6xl font-black text-white">$5200</span>
                         </div>
-                        <div class="text-white/90 font-bold text-lg">8 أسابيع</div>
+                        <div class="text-white/90 font-bold text-lg"><span>8</span> <span data-lang-key="pricing-weeks">أسابيع</span></div>
                     </div>
                     
                     <!-- Features -->
@@ -1169,7 +1229,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-white text-lg font-semibold">160 ساعة تعليمية</span>
+                                <span class="text-white text-lg font-semibold"><span>160</span> <span data-lang-key="pricing-hours">ساعة تعليمية</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#F7A716] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1177,7 +1237,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-white text-lg font-semibold">4 مستويات دراسية</span>
+                                <span class="text-white text-lg font-semibold"><span>4</span> <span data-lang-key="pricing-levels">مستويات دراسية</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#F7A716] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1185,7 +1245,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-white text-lg font-semibold">8 رحلات موجهة</span>
+                                <span class="text-white text-lg font-semibold"><span>8</span> <span data-lang-key="pricing-trips">رحلات موجهة</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#F7A716] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1193,7 +1253,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-white text-lg font-semibold">40 حلقة قرآن</span>
+                                <span class="text-white text-lg font-semibold"><span>40</span> <span data-lang-key="pricing-quran">حلقة قرآن</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#F7A716] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1201,14 +1261,14 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-white text-lg font-semibold">4 جلسات دراسات إسلامية</span>
+                                <span class="text-white text-lg font-semibold"><span>4</span> <span data-lang-key="pricing-islamic">جلسات دراسات إسلامية</span></span>
                             </li>
                         </ul>
                     </div>
                     
                     <!-- Button -->
                     <div class="pt-6 border-t-2 border-white/20">
-                        <a href="#contact" class="block text-center bg-gradient-to-r from-[#F7A716] to-[#F7A716] text-white py-4 px-6 rounded-xl font-black transition-all text-lg hover:shadow-2xl">
+                        <a href="#contact" class="block text-center bg-gradient-to-r from-[#F7A716] to-[#F7A716] text-white py-4 px-6 rounded-xl font-black transition-all text-lg hover:shadow-2xl" data-lang-key="pricing-choose">
                             اختر هذه الباقة
                         </a>
                     </div>
@@ -1218,13 +1278,13 @@
                 <div class="flex flex-col bg-white border-2 border-gray-200 rounded-3xl p-8 hover:border-[#213886] transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
                     <!-- Header -->
                     <div class="text-center pb-8 border-b-2 border-gray-100">
-                        <div class="inline-block bg-gradient-to-r from-blue-50 to-blue-100 text-[#213886] px-6 py-2 rounded-full font-black text-sm mb-6">
+                        <div class="inline-block bg-gradient-to-r from-blue-50 to-blue-100 text-[#213886] px-6 py-2 rounded-full font-black text-sm mb-6" data-lang-key="pricing-comprehensive">
                             الباقة الشاملة
                         </div>
                         <div class="mb-3">
                             <span class="text-6xl font-black text-gray-900">$7800</span>
                         </div>
-                        <div class="text-gray-600 font-bold text-lg">12 أسبوعًا</div>
+                        <div class="text-gray-600 font-bold text-lg"><span>12</span> <span data-lang-key="pricing-weeks">أسبوعًا</span></div>
                     </div>
                     
                     <!-- Features -->
@@ -1236,7 +1296,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">240 ساعة تعليمية</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>240</span> <span data-lang-key="pricing-hours">ساعة تعليمية</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1244,7 +1304,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">6 مستويات دراسية</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>6</span> <span data-lang-key="pricing-levels">مستويات دراسية</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1252,7 +1312,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">12 رحلة موجهة</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>12</span> <span data-lang-key="pricing-trip">رحلة موجهة</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1260,7 +1320,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">60 حلقة قرآن</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>60</span> <span data-lang-key="pricing-quran">حلقة قرآن</span></span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-6 h-6 bg-[#213886] rounded-full flex items-center justify-center flex-shrink-0">
@@ -1268,14 +1328,14 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 text-lg font-semibold">12 جلسة دراسات إسلامية</span>
+                                <span class="text-gray-700 text-lg font-semibold"><span>12</span> <span data-lang-key="pricing-islamic-session">جلسة دراسات إسلامية</span></span>
                             </li>
                         </ul>
                     </div>
                     
                     <!-- Button -->
                     <div class="pt-6 border-t-2 border-gray-100">
-                        <a href="#contact" class="block text-center bg-white border-2 border-[#213886] text-[#213886] hover:bg-[#213886] hover:text-white py-4 px-6 rounded-xl font-black transition-all text-lg">
+                        <a href="#contact" class="block text-center bg-white border-2 border-[#213886] text-[#213886] hover:bg-[#213886] hover:text-white py-4 px-6 rounded-xl font-black transition-all text-lg" data-lang-key="pricing-choose">
                             اختر هذه الباقة
                         </a>
                     </div>
@@ -1286,9 +1346,9 @@
             <div class="text-center max-w-3xl mx-auto mt-12" data-aos="fade-up" data-aos-delay="400">
                 <div class="bg-gradient-to-r from-amber-50 to-orange-50 border-r-4 border-[#F7A716] p-6 rounded-xl shadow-md">
                     <p class="text-gray-700 text-base leading-relaxed">
-                        <span class="font-bold text-gray-800">💡 ملاحظة:</span> 
-                        الأسعار لا تشمل تذاكر السفر وتأشيرة العمرة 
-                        <span class="text-[#F7A716] font-bold">(120$ لكل طالب)</span>
+                        <span class="font-bold text-gray-800" data-lang-key="pricing-note">💡 ملاحظة:</span> 
+                        <span data-lang-key="pricing-note-text">الأسعار لا تشمل تذاكر السفر وتأشيرة العمرة</span> 
+                        <span class="text-[#F7A716] font-bold" data-lang-key="pricing-student">(120$ لكل طالب)</span>
                     </p>
                 </div>
             </div>
@@ -1300,13 +1360,13 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-5xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="motivation-star text-8xl mb-10">🌟</div>
-                <h2 class="text-4xl md:text-6xl font-black mb-10 leading-tight">
-                    "لنجعل اللغة العربية<br>لغة العالم!"
+                <h2 id="motivation-quote" class="text-4xl md:text-6xl font-black mb-10 leading-tight">
+                    <span data-lang-key="motivation-quote">"لنجعل اللغة العربية لغة العالم!"</span>
                 </h2>
-                <p class="text-xl md:text-3xl leading-relaxed font-medium">
-                    مع وكالة الأهرام للسفر والسياحة، لا تتعلّم العربية فقط،<br>
-                    بل تعيشها بكل تفاصيلها في مكة المكرمة<br>
-                    <span class="text-[#F7A716] font-black">حيث تلتقي المعرفة بالإيمان والثقافة</span>
+                <p id="motivation-text" class="text-xl md:text-3xl leading-relaxed font-medium">
+                    <span data-lang-key="motivation-text">مع وكالة الأهرام للسفر والسياحة، لا تتعلّم العربية فقط،</span><br>
+                    <span data-lang-key="motivation-text2">بل تعيشها بكل تفاصيلها في مكة المكرمة</span><br>
+                    <span class="text-[#F7A716] font-black" data-lang-key="motivation-highlight">حيث تلتقي المعرفة بالإيمان والثقافة</span>
                 </p>
             </div>
         </div>
@@ -1316,9 +1376,9 @@
     <section id="contact" class="py-24 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="section-title" data-aos="fade-up">تواصل معنا</h2>
-                <p class="text-2xl text-gray-700 mt-6 font-bold max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    سجّل الآن واستمتع بتجربة تعليمية فريدة في مكة المكرمة
+                <h2 class="section-title" data-aos="fade-up" data-lang-key="contact-title">تواصل معنا</h2>
+                <p class="text-2xl text-gray-700 mt-6 font-bold max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-lang-key="contact-subtitle">
+                    نحن هنا لخدمتك! تواصل معنا الآن للاستفسار أو للتسجيل في البرنامج
                 </p>
             </div>
             
@@ -1329,11 +1389,11 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-[#213886] to-[#2A4AA0] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-md">
                             📞
                         </div>
-                        <h3 class="text-lg font-bold text-gray-600 mb-4">الهاتف</h3>
-                        <a href="tel:+966920019190" class="text-2xl font-black text-[#213886] hover:text-[#F7A716] transition block mb-6">
-                            966920019190+
+                        <h3 class="text-lg font-bold text-gray-600 mb-4" data-lang-key="contact-phone">الهاتف</h3>
+                        <a href="tel:+966920019190" class="text-2xl font-black text-[#213886] hover:text-[#F7A716] transition block mb-6" dir="ltr">
+                            +966920019190
                         </a>
-                        <a href="tel:+966920019190" class="block bg-gradient-to-r from-[#213886] to-[#2A4AA0] text-white py-3 px-6 rounded-xl font-bold hover:shadow-xl transition">
+                        <a href="tel:+966920019190" class="block bg-gradient-to-r from-[#213886] to-[#2A4AA0] text-white py-3 px-6 rounded-xl font-bold hover:shadow-xl transition" data-lang-key="contact-call">
                             اتصل الآن
                         </a>
                     </div>
@@ -1345,11 +1405,11 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-[#F7A716] to-[#F7A716] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-md">
                             📧
                         </div>
-                        <h3 class="text-lg font-bold text-gray-600 mb-4">البريد الإلكتروني</h3>
+                        <h3 class="text-lg font-bold text-gray-600 mb-4" data-lang-key="contact-email">البريد الإلكتروني</h3>
                         <a href="mailto:CC@ATTC.SA" class="text-2xl font-black text-[#F7A716] hover:text-[#213886] transition block mb-6 break-all">
                             CC@ATTC.SA
                         </a>
-                        <a href="mailto:CC@ATTC.SA?subject=استفسار عن برنامج تعلم اللغة العربية&body=السلام عليكم،%0D%0A%0D%0Aأود الاستفسار عن برنامج تعلم اللغة العربية في مكة المكرمة.%0D%0A%0D%0Aشكراً" class="block bg-gradient-to-r from-[#F7A716] to-[#F7A716] text-white py-3 px-6 rounded-xl font-bold hover:shadow-xl transition">
+                        <a href="mailto:CC@ATTC.SA?subject=استفسار عن برنامج تعلم اللغة العربية&body=السلام عليكم،%0D%0A%0D%0Aأود الاستفسار عن برنامج تعلم اللغة العربية في مكة المكرمة.%0D%0A%0D%0Aشكراً" class="block bg-gradient-to-r from-[#F7A716] to-[#F7A716] text-white py-3 px-6 rounded-xl font-bold hover:shadow-xl transition" data-lang-key="contact-email-btn">
                             راسلنا الآن
                         </a>
                     </div>
@@ -1361,11 +1421,11 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-[#213886] to-[#2A4AA0] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-md">
                             📍
                         </div>
-                        <h3 class="text-lg font-bold text-gray-600 mb-4">الموقع</h3>
-                        <div class="text-2xl font-black text-[#213886] mb-6">
+                        <h3 class="text-lg font-bold text-gray-600 mb-4" data-lang-key="contact-location">الموقع</h3>
+                        <div class="text-2xl font-black text-[#213886] mb-6" data-lang-key="contact-location-text">
                             المملكة العربية السعودية
                         </div>
-                        <a href="" target="_blank" class="block bg-gradient-to-r from-[#213886] to-[#2A4AA0] text-white py-3 px-6 rounded-xl font-bold hover:shadow-xl transition">
+                        <a href="https://wa.me/966920019190" target="_blank" class="block bg-gradient-to-r from-[#213886] to-[#2A4AA0] text-white py-3 px-6 rounded-xl font-bold hover:shadow-xl transition" data-lang-key="contact-location-btn">
                             الموقع
                         </a>
                     </div>
@@ -1378,59 +1438,59 @@
     <footer class="footer-gradient text-white py-16">
         <div class="container mx-auto px-6">
             <!-- Top Section -->
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
+            <div class="grid md:grid-cols-3 gap-12 mb-12" id="footer-grid">
                 <!-- Company Info -->
-                <div>
+                <div class="footer-col-1">
                     <div class="bg-white p-4 rounded-xl shadow-xl inline-block mb-6">
                         <img src="logo.jpg" alt="ATTC - وكالة الأهرام للسفر والسياحة" class="h-16 w-auto">
                     </div>
-                    <h3 class="text-xl font-black mb-4 text-[#F7A716]">وكالة الأهرام للسفر والسياحة</h3>
-                    <p class="text-white leading-relaxed mb-4">
+                    <h3 class="text-xl font-black mb-4 text-[#F7A716]" data-lang-key="footer-company">وكالة الأهرام للسفر والسياحة</h3>
+                    <p class="text-white leading-relaxed mb-4" data-lang-key="footer-description">
                         رائدة في تقديم برامج تعليم اللغة العربية بالتعاون مع جامعة أم القرى في مكة المكرمة
                     </p>
                 </div>
                 
                 <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-black mb-6 text-[#F7A716]">روابط سريعة</h3>
+                <div class="footer-col-2">
+                    <h3 class="text-xl font-black mb-6 text-[#F7A716]" data-lang-key="footer-links">روابط سريعة</h3>
                     <ul class="space-y-3">
                         <li>
                             <a href="#hero" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
-                                <span>←</span> الرئيسية
+                                <span>←</span> <span data-lang-key="nav-home">الرئيسية</span>
                             </a>
                         </li>
                         <li>
                             <a href="#features" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
-                                <span>←</span> المميزات
+                                <span>←</span> <span data-lang-key="nav-features">المميزات</span>
                             </a>
                         </li>
                         <li>
                             <a href="#journey" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
-                                <span>←</span> رحلة المتعلم
+                                <span>←</span> <span data-lang-key="nav-journey">رحلة المتعلم</span>
                             </a>
                         </li>
                         <li>
                             <a href="#pricing" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
-                                <span>←</span> الأسعار
+                                <span>←</span> <span data-lang-key="nav-pricing">الأسعار</span>
                             </a>
                         </li>
                         <li>
                             <a href="#contact" class="text-white hover:text-[#F7A716] transition-colors flex items-center gap-2">
-                                <span>←</span> تواصل معنا
+                                <span>←</span> <span data-lang-key="contact-title">تواصل معنا</span>
                             </a>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Contact Info -->
-                <div>
-                    <h3 class="text-xl font-black mb-6 text-[#F7A716]">تواصل معنا</h3>
+                <div class="footer-col-3">
+                    <h3 class="text-xl font-black mb-6 text-[#F7A716]" data-lang-key="footer-contact">تواصل معنا</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3 text-white">
                             <span class="text-[#F7A716] text-xl">📞</span>
                             <div>
-                                <a href="tel:+966920019190" class="hover:text-[#F7A716] transition-colors">
-                                    966920019190+
+                                <a href="tel:+966920019190" class="hover:text-[#F7A716] transition-colors" dir="ltr">
+                                    +966920019190
                                 </a>
                             </div>
                         </li>
@@ -1444,12 +1504,12 @@
                         </li>
                         <li class="flex items-start gap-3 text-white">
                             <span class="text-[#F7A716] text-xl">📍</span>
-                            <div>المملكة العربية السعودية</div>
+                            <div data-lang-key="contact-location-text">المملكة العربية السعودية</div>
                         </li>
                     </ul>
                     
                     <!-- WhatsApp Button -->
-                    <a href="https://wa.me/966920019190" target="_blank" class="mt-6 inline-block bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+                    <a href="https://wa.me/966920019190" target="_blank" class="mt-6 inline-block bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all" data-lang-key="footer-whatsapp">
                         💬 تواصل عبر واتساب
                     </a>
                 </div>
@@ -1462,8 +1522,8 @@
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                 <!-- Copyright -->
                 <div class="text-center">
-                    <p class="text-white">
-                        © 2025 <span class="text-white font-bold">وكالة الأهرام للسفر والسياحة</span> - جميع الحقوق محفوظة
+                    <p id="footer-copyright" class="text-white">
+                        <span data-lang-key="footer-copyright">© 2025</span> <span class="text-white font-bold" data-lang-key="footer-company">وكالة الأهرام للسفر والسياحة</span> <span data-lang-key="footer-rights">- جميع الحقوق محفوظة</span>
                     </p>
                 </div>
             </div>
@@ -1617,7 +1677,11 @@
             const imagesContainer = carousel.element.querySelector('.carousel-images');
             const dots = carousel.element.querySelectorAll('.carousel-dot');
             
-            imagesContainer.style.transform = `translateX(${carousel.currentSlide * 100}%)`;
+            // Get current language direction
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            const direction = isRTL ? 1 : -1;
+            
+            imagesContainer.style.transform = `translateX(${direction * carousel.currentSlide * 100}%)`;
             
             dots.forEach((dot, index) => {
                 if (index === carousel.currentSlide) {
@@ -1630,6 +1694,444 @@
         
         // Initialize carousels when page loads
         window.addEventListener('load', initCarousels);
+        
+        // ============================================
+        // Language Switcher System
+        // ============================================
+        
+        const translations = {
+            ar: {
+                // Navigation
+                'nav-home': 'الرئيسية',
+                'nav-features': 'المميزات',
+                'nav-journey': 'الرحلة',
+                'nav-pricing': 'الأسعار',
+                'nav-register': 'سجّل الآن',
+                
+                // Hero Section
+                'hero-badge': '🌟 حصري بالتعاون مع جامعة أم القرى',
+                'hero-cta-register': 'سجّل الآن',
+                'hero-cta-learn': 'اعرف المزيد',
+                
+                // Stats
+                'stat-1': 'عام خبرة',
+                'stat-2': 'ساعة تعليمية',
+                'stat-3': 'مستويات دراسية',
+                'stat-4': 'شهادة معتمدة',
+                
+                // Features Section
+                'features-title': 'لماذا تختار هذا البرنامج؟',
+                'features-subtitle': 'نقدم لك تجربة تعليمية فريدة تجمع بين الأصالة والحداثة',
+                'feature-1-title': 'تجربة تعليمية عالمية',
+                'feature-1-desc': 'في أقدس بقاع الأرض حيث تلتقي الروحانية بالمعرفة',
+                'feature-2-title': 'شهادة معتمدة',
+                'feature-2-desc': 'من جامعة أم القرى المرموقة معترف بها عالمياً',
+                'feature-3-title': 'تركيز على التواصل',
+                'feature-3-desc': 'تطوير مهارات التواصل العملي في الحياة اليومية',
+                'feature-4-title': 'تعليم متكامل',
+                'feature-4-desc': 'دمج بين التعليم الحضوري والرقمي لأفضل النتائج',
+                'feature-5-title': 'إشراف أكاديمي',
+                'feature-5-desc': 'من نخبة الخبراء والأساتذة المتخصصين',
+                'feature-6-title': 'خبرة عريقة',
+                'feature-6-desc': 'أكثر من 50 عاماً من التميز الأكاديمي والتعليمي',
+                
+                // Services Section
+                'services-title': 'الخدمات الأساسية',
+                'services-subtitle': 'نوفر لك كل ما تحتاجه لتجربة تعليمية مريحة ومثمرة',
+                'service-1-title': 'الإقامة',
+                'service-1-desc': 'إقامة فاخرة في سكن مجهز بالكامل بالقرب من الحرم المكي',
+                'service-2-title': 'الوجبات',
+                'service-2-desc': 'وجبتان يوميًا متنوعة ومغذية على طراز البوفيه المفتوح',
+                'service-3-title': 'النقل',
+                'service-3-desc': 'خدمة نقل مريحة ومنظمة بين جميع المواقع طوال البرنامج',
+                'service-4-title': 'العمرة والزيارات',
+                'service-4-desc': 'جولات موجهة للمواقع المقدسة والتاريخية الإسلامية',
+                
+                // Journey Section
+                'journey-title': 'رحلة المتعلم',
+                'journey-subtitle': 'خطوة بخطوة نحو إتقان اللغة العربية',
+                'journey-1-title': 'اختبار تحديد المستوى',
+                'journey-1-desc': 'نبدأ معك بتقييم شامل لمستواك الحالي لنضعك في المجموعة المناسبة تماماً لقدراتك',
+                'journey-2-title': 'الانضمام إلى المجموعة التعليمية',
+                'journey-2-desc': 'ستنضم إلى مجموعة من المتعلمين المتحمسين من نفس مستواك من جميع أنحاء العالم',
+                'journey-3-title': 'أنشطة تمهيدية عبر المنصة',
+                'journey-3-desc': 'أنشطة تفاعلية وممتعة للتحضير قبل الدروس الحضورية وبناء المعرفة الأساسية',
+                'journey-4-title': 'دروس حضورية وتطبيق عملي',
+                'journey-4-desc': 'دروس تفاعلية مباشرة مع أساتذة متخصصين في حرم جامعة أم القرى بمكة المكرمة',
+                'journey-5-title': 'واجبات وأنشطة بعد الدروس',
+                'journey-5-desc': 'تعزيز المهارات من خلال الممارسة المستمرة والتطبيق العملي اليومي',
+                'journey-6-title': 'احصل على شهادتك المعتمدة',
+                'journey-6-desc': 'بعد إتمام المستوى بنجاح، تحصل على شهادة معتمدة من جامعة أم القرى المرموقة',
+                
+                // Pricing Section
+                'pricing-title': 'الأسعار والخيارات',
+                'pricing-subtitle': 'اختر الباقة المناسبة لك ولمستواك التعليمي',
+                'pricing-basic': 'الباقة الأساسية',
+                'pricing-advanced': 'الباقة المتقدمة',
+                'pricing-comprehensive': 'الباقة الشاملة',
+                'pricing-most-popular': 'الأكثر شعبية',
+                'pricing-weeks': 'أسابيع',
+                'pricing-choose': 'اختر هذه الباقة',
+                'pricing-note': '💡 ملاحظة:',
+                'pricing-note-text': 'الأسعار لا تشمل تذاكر السفر وتأشيرة العمرة',
+                'pricing-student': '(120$ لكل طالب)',
+                'pricing-hours': 'ساعة تعليمية',
+                'pricing-levels': 'مستويات دراسية',
+                'pricing-level': 'مستويان دراسيان',
+                'pricing-trips': 'رحلات موجهة',
+                'pricing-trip': 'رحلة موجهة',
+                'pricing-quran': 'حلقة قرآن',
+                'pricing-islamic': 'جلسات دراسات إسلامية',
+                'pricing-islamic-session': 'جلسة دراسات إسلامية',
+                
+                // Motivation Section
+                'motivation-quote': '"لنجعل اللغة العربية لغة العالم!"',
+                'motivation-text': 'مع وكالة الأهرام للسفر والسياحة، لا تتعلّم العربية فقط،',
+                'motivation-text2': 'بل تعيشها بكل تفاصيلها في مكة المكرمة',
+                'motivation-highlight': 'حيث تلتقي المعرفة بالإيمان والثقافة',
+                
+                // Contact Section
+                'contact-title': 'تواصل معنا',
+                'contact-subtitle': 'نحن هنا لخدمتك! تواصل معنا الآن للاستفسار أو للتسجيل في البرنامج',
+                'contact-phone': 'الهاتف',
+                'contact-email': 'البريد الإلكتروني',
+                'contact-location': 'الموقع',
+                'contact-call': 'اتصل الآن',
+                'contact-email-btn': 'راسلنا الآن',
+                'contact-location-text': 'المملكة العربية السعودية',
+                'contact-location-btn': 'الموقع',
+                
+                // Footer
+                'footer-company': 'وكالة الأهرام للسفر والسياحة',
+                'footer-description': 'رائدة في تقديم برامج تعليم اللغة العربية بالتعاون مع جامعة أم القرى في مكة المكرمة',
+                'footer-links': 'روابط سريعة',
+                'footer-contact': 'تواصل معنا',
+                'footer-whatsapp': '💬 تواصل عبر واتساب',
+                'footer-copyright': '© 2025',
+                'footer-rights': '- جميع الحقوق محفوظة'
+            },
+            en: {
+                // Navigation
+                'nav-home': 'Home',
+                'nav-features': 'Features',
+                'nav-journey': 'Journey',
+                'nav-pricing': 'Pricing',
+                'nav-register': 'Register Now',
+                
+                // Hero Section
+                'hero-badge': '🌟 Exclusive Collaboration with Umm Al-Qura University',
+                'hero-cta-register': 'Register Now',
+                'hero-cta-learn': 'Learn More',
+                
+                // Stats
+                'stat-1': 'Years of Experience',
+                'stat-2': 'Teaching Hours',
+                'stat-3': 'Study Levels',
+                'stat-4': 'Accredited Certificate',
+                
+                // Features Section
+                'features-title': 'Why Choose This Program?',
+                'features-subtitle': 'We offer you a unique learning experience that combines authenticity and modernity',
+                'feature-1-title': 'Global Learning Experience',
+                'feature-1-desc': 'In the holiest place on Earth where spirituality meets knowledge',
+                'feature-2-title': 'Accredited Certificate',
+                'feature-2-desc': 'From the prestigious Umm Al-Qura University, internationally recognized',
+                'feature-3-title': 'Communication Focus',
+                'feature-3-desc': 'Developing practical communication skills for daily life',
+                'feature-4-title': 'Integrated Education',
+                'feature-4-desc': 'Combining in-person and digital learning for the best results',
+                'feature-5-title': 'Academic Supervision',
+                'feature-5-desc': 'By elite experts and specialized professors',
+                'feature-6-title': 'Extensive Experience',
+                'feature-6-desc': 'More than 50 years of academic and educational excellence',
+                
+                // Services Section
+                'services-title': 'Essential Services',
+                'services-subtitle': 'We provide everything you need for a comfortable and fruitful learning experience',
+                'service-1-title': 'Accommodation',
+                'service-1-desc': 'Luxurious accommodation in fully equipped housing near the Holy Mosque',
+                'service-2-title': 'Meals',
+                'service-2-desc': 'Two daily varied and nutritious meals in buffet style',
+                'service-3-title': 'Transportation',
+                'service-3-desc': 'Comfortable and organized transportation service between all locations throughout the program',
+                'service-4-title': 'Umrah & Visits',
+                'service-4-desc': 'Guided tours to Islamic holy and historical sites',
+                
+                // Journey Section
+                'journey-title': 'The Learner\'s Journey',
+                'journey-subtitle': 'Step by step towards mastering the Arabic language',
+                'journey-1-title': 'Placement Test',
+                'journey-1-desc': 'We start with a comprehensive assessment of your current level to place you in the group that perfectly matches your abilities',
+                'journey-2-title': 'Join the Learning Group',
+                'journey-2-desc': 'You\'ll join a group of enthusiastic learners of the same level from around the world',
+                'journey-3-title': 'Preparatory Activities on the Platform',
+                'journey-3-desc': 'Interactive and fun activities to prepare before in-person classes and build foundational knowledge',
+                'journey-4-title': 'In-Person Lessons and Practical Application',
+                'journey-4-desc': 'Interactive direct lessons with specialized professors at Umm Al-Qura University campus in Makkah',
+                'journey-5-title': 'Homework and Post-Class Activities',
+                'journey-5-desc': 'Reinforcing skills through continuous practice and daily practical application',
+                'journey-6-title': 'Get Your Accredited Certificate',
+                'journey-6-desc': 'After successfully completing the level, you receive an accredited certificate from the prestigious Umm Al-Qura University',
+                
+                // Pricing Section
+                'pricing-title': 'Pricing & Packages',
+                'pricing-subtitle': 'Choose the package that suits you and your educational level',
+                'pricing-basic': 'Basic Package',
+                'pricing-advanced': 'Advanced Package',
+                'pricing-comprehensive': 'Comprehensive Package',
+                'pricing-most-popular': 'Most Popular',
+                'pricing-weeks': 'weeks',
+                'pricing-choose': 'Choose This Package',
+                'pricing-note': '💡 Note:',
+                'pricing-note-text': 'Prices do not include flight tickets and Umrah visa',
+                'pricing-student': '($120 per student)',
+                'pricing-hours': 'teaching hours',
+                'pricing-levels': 'study levels',
+                'pricing-level': 'two study levels',
+                'pricing-trips': 'guided trips',
+                'pricing-trip': 'guided trip',
+                'pricing-quran': 'Quran sessions',
+                'pricing-islamic': 'Islamic studies sessions',
+                'pricing-islamic-session': 'Islamic studies session',
+                
+                // Motivation Section
+                'motivation-quote': '"Let\'s make Arabic the language of the world!"',
+                'motivation-text': 'With Al-Ahram Travel & Tourism Agency, you don\'t just learn Arabic,',
+                'motivation-text2': 'but you experience it in all its details in the Holy City of Makkah',
+                'motivation-highlight': 'where knowledge meets faith and culture',
+                
+                // Contact Section
+                'contact-title': 'Contact Us',
+                'contact-subtitle': 'We are here to serve you! Contact us now for inquiries or to register for the program',
+                'contact-phone': 'Phone',
+                'contact-email': 'Email',
+                'contact-location': 'Location',
+                'contact-call': 'Call Now',
+                'contact-email-btn': 'Email Us Now',
+                'contact-location-text': 'Kingdom of Saudi Arabia',
+                'contact-location-btn': 'Location',
+                
+                // Footer
+                'footer-company': 'Al-Ahram Travel & Tourism Agency',
+                'footer-description': 'Leader in providing Arabic language education programs in collaboration with Umm Al-Qura University in Makkah',
+                'footer-links': 'Quick Links',
+                'footer-contact': 'Contact Us',
+                'footer-whatsapp': '💬 Contact via WhatsApp',
+                'footer-copyright': '© 2025',
+                'footer-rights': '- All Rights Reserved'
+            }
+        };
+        
+        // Current language (default: Arabic)
+        let currentLang = localStorage.getItem('preferred-language') || 'ar';
+        
+        // Switch language function
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML attributes
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update all elements with data-lang-key
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                    // Set text direction for each element
+                    element.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                }
+            });
+            
+            // Update language buttons
+            updateLanguageButtons(lang);
+            
+            // Update specific elements with complex structure (need to preserve HTML)
+            updateComplexElements(lang);
+        }
+        
+        // Update language button styles
+        function updateLanguageButtons(lang) {
+            // Desktop buttons
+            const arBtn = document.getElementById('lang-ar');
+            const enBtn = document.getElementById('lang-en');
+            
+            if (lang === 'ar') {
+                arBtn.classList.add('bg-[#213886]', 'text-white');
+                arBtn.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                enBtn.classList.remove('bg-[#213886]', 'text-white');
+                enBtn.classList.add('text-gray-700', 'hover:bg-gray-100');
+            } else {
+                enBtn.classList.add('bg-[#213886]', 'text-white');
+                enBtn.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                arBtn.classList.remove('bg-[#213886]', 'text-white');
+                arBtn.classList.add('text-gray-700', 'hover:bg-gray-100');
+            }
+            
+            // Mobile buttons
+            const arBtnMobile = document.getElementById('lang-ar-mobile');
+            const enBtnMobile = document.getElementById('lang-en-mobile');
+            
+            if (lang === 'ar') {
+                arBtnMobile.classList.add('bg-[#213886]', 'text-white');
+                arBtnMobile.classList.remove('bg-gray-100', 'text-gray-700');
+                enBtnMobile.classList.remove('bg-[#213886]', 'text-white');
+                enBtnMobile.classList.add('bg-gray-100', 'text-gray-700');
+            } else {
+                enBtnMobile.classList.add('bg-[#213886]', 'text-white');
+                enBtnMobile.classList.remove('bg-gray-100', 'text-gray-700');
+                arBtnMobile.classList.remove('bg-[#213886]', 'text-white');
+                arBtnMobile.classList.add('bg-gray-100', 'text-gray-700');
+            }
+        }
+        
+        // Update complex elements that need special handling
+        function updateComplexElements(lang) {
+            const direction = lang === 'ar' ? 'rtl' : 'ltr';
+            const arrow = lang === 'ar' ? '←' : '→';
+            
+            // Hero Title
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                heroTitle.setAttribute('dir', direction);
+                if (lang === 'ar') {
+                    heroTitle.innerHTML = `تعلم اللغة العربية<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F7A716] via-[#F7A716] to-[#F7A716]">
+                            في مكة المكرمة
+                        </span>`;
+                } else {
+                    heroTitle.innerHTML = `Learn Arabic Language<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F7A716] via-[#F7A716] to-[#F7A716]">
+                            in the Holy City of Makkah
+                        </span>`;
+                }
+            }
+            
+            // Hero Subtitle
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroSubtitle) {
+                heroSubtitle.setAttribute('dir', direction);
+                if (lang === 'ar') {
+                    heroSubtitle.innerHTML = `رحلة تجمع بين العلم، والثقافة، والروحانية<br>
+                        بشهادة معتمدة من جامعة أم القرى`;
+                } else {
+                    heroSubtitle.innerHTML = `A journey that combines knowledge, culture, and spirituality<br>
+                        with an accredited certificate from Umm Al-Qura University`;
+                }
+            }
+            
+            // Update footer arrows
+            const footerLinks = document.querySelectorAll('footer a span:first-child');
+            footerLinks.forEach(span => {
+                if (span.textContent === '←' || span.textContent === '→') {
+                    span.textContent = arrow;
+                }
+            });
+            
+            // Update footer grid and sections
+            const footerGrid = document.getElementById('footer-grid');
+            if (footerGrid) {
+                footerGrid.setAttribute('dir', direction);
+                
+                // Reorder columns for English (LTR)
+                const col1 = footerGrid.querySelector('.footer-col-1');
+                const col2 = footerGrid.querySelector('.footer-col-2');
+                const col3 = footerGrid.querySelector('.footer-col-3');
+                
+                if (lang === 'en') {
+                    // English: Company (left), Links (center), Contact (right)
+                    col1.style.order = '1';
+                    col2.style.order = '2';
+                    col3.style.order = '3';
+                } else {
+                    // Arabic: Company (right), Links (center), Contact (left)
+                    col1.style.order = '3';
+                    col2.style.order = '2';
+                    col3.style.order = '1';
+                }
+            }
+            
+            // Update copyright section
+            const footerCopyright = document.getElementById('footer-copyright');
+            if (footerCopyright) {
+                footerCopyright.setAttribute('dir', direction);
+            }
+            
+            // Update motivation quote and text
+            const motivationQuote = document.getElementById('motivation-quote');
+            if (motivationQuote) {
+                motivationQuote.setAttribute('dir', direction);
+            }
+            const motivationText = document.getElementById('motivation-text');
+            if (motivationText) {
+                motivationText.setAttribute('dir', direction);
+            }
+            
+            // Update all section titles
+            document.querySelectorAll('.section-title').forEach(title => {
+                title.setAttribute('dir', direction);
+            });
+            
+            // Update all text paragraphs in sections
+            document.querySelectorAll('section p').forEach(p => {
+                p.setAttribute('dir', direction);
+            });
+            
+            // Update all buttons and links
+            document.querySelectorAll('a[data-lang-key], button[data-lang-key]').forEach(elem => {
+                elem.setAttribute('dir', direction);
+            });
+            
+            // Update all headings
+            document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
+                if (heading.hasAttribute('data-lang-key') || heading.querySelector('[data-lang-key]')) {
+                    heading.setAttribute('dir', direction);
+                }
+            });
+            
+            // Update list items with data-lang-key
+            document.querySelectorAll('li').forEach(li => {
+                if (li.querySelector('[data-lang-key]')) {
+                    li.setAttribute('dir', direction);
+                }
+            });
+            
+            // Update pricing cards and feature descriptions
+            document.querySelectorAll('#pricing .flex.flex-col').forEach(card => {
+                card.setAttribute('dir', direction);
+            });
+            
+            // Update all cards with feature/service descriptions
+            document.querySelectorAll('.bg-white.rounded-3xl, .bg-gradient-to-br').forEach(card => {
+                const hasTranslation = card.querySelector('[data-lang-key]');
+                if (hasTranslation) {
+                    card.setAttribute('dir', direction);
+                }
+            });
+            
+            // Update contact cards
+            document.querySelectorAll('#contact .bg-white.rounded-2xl').forEach(card => {
+                card.setAttribute('dir', direction);
+            });
+            
+            // Update journey section steps
+            document.querySelectorAll('#journey .relative').forEach(step => {
+                if (step.querySelector('[data-lang-key]')) {
+                    step.setAttribute('dir', direction);
+                }
+            });
+            
+            // Update all carousels to reflect language direction change
+            Object.keys(carousels).forEach(carouselId => {
+                updateCarousel(carouselId);
+            });
+        }
+        
+        // Initialize language on page load
+        window.addEventListener('load', function() {
+            switchLanguage(currentLang);
+        });
     </script>
 </body>
 </html>
