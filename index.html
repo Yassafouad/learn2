@@ -412,8 +412,65 @@
                 font-size: 2rem;
             }
             
+            .hero-section {
+                min-height: 100vh;
+                background-position: center center;
+                background-size: cover;
+                padding-top: 80px;
+            }
+            
+            .hero-content {
+                padding: 2rem 1rem 3rem 1rem;
+            }
+            
             .hero-section h1 {
                 font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+            
+            .hero-section p {
+                font-size: 1.25rem !important;
+            }
+            
+            .hero-section p br {
+                display: none;
+            }
+            
+            .modern-cta {
+                padding: 0.875rem 2rem !important;
+                font-size: 1.125rem !important;
+            }
+            
+            .stats-container {
+                gap: 0.75rem !important;
+                margin-top: 3rem !important;
+            }
+            
+            .stats-container > div {
+                padding: 1rem !important;
+            }
+            
+            .stats-container .text-4xl {
+                font-size: 2rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                background-attachment: scroll;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem !important;
+            }
+            
+            .hero-section p {
+                font-size: 1.125rem !important;
+            }
+            
+            .modern-cta {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 1rem !important;
             }
         }
     </style>
