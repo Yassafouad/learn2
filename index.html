@@ -434,6 +434,85 @@
             overflow-x: hidden;
         }
         
+        /* Image Carousel Styling */
+        .image-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .carousel-image {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: #F7A716;
+            width: 24px;
+            border-radius: 4px;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        
+        .image-carousel:hover .carousel-arrow {
+            opacity: 1;
+        }
+        
+        .carousel-arrow.prev {
+            right: 10px;
+        }
+        
+        .carousel-arrow.next {
+            left: 10px;
+        }
+        
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .section-title {
@@ -659,8 +738,29 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
                 <!-- Feature 1 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="tagrba.jpg" alt="تجربة تعليمية عالمية" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="feature1">
+                        <div class="carousel-images">
+                            <div class="carousel-image">
+                                <img src="tagrba.jpg" alt="تجربة تعليمية عالمية 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-image">
+                                <img src="tagrba2.png" alt="تجربة تعليمية عالمية 2" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('feature1', -1)">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('feature1', 1)">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <div class="carousel-dots">
+                            <span class="carousel-dot active" onclick="goToSlide('feature1', 0)"></span>
+                            <span class="carousel-dot" onclick="goToSlide('feature1', 1)"></span>
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">تجربة تعليمية عالمية</h3>
@@ -670,8 +770,29 @@
                 
                 <!-- Feature 2 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="shehad.png" alt="شهادة معتمدة" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="feature2">
+                        <div class="carousel-images">
+                            <div class="carousel-image">
+                                <img src="shehad.png" alt="شهادة معتمدة 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-image">
+                                <img src="shehada2.png" alt="شهادة معتمدة 2" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('feature2', -1)">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('feature2', 1)">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <div class="carousel-dots">
+                            <span class="carousel-dot active" onclick="goToSlide('feature2', 0)"></span>
+                            <span class="carousel-dot" onclick="goToSlide('feature2', 1)"></span>
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">شهادة معتمدة</h3>
@@ -681,8 +802,14 @@
                 
                 <!-- Feature 3 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="tarkez.jpeg" alt="تركيز على التواصل" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="feature3">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="tr.png" alt="تركيز على التواصل 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="tr.png" alt="تركيز على التواصل 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('feature3', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('feature3', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature3', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature3', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">تركيز على التواصل</h3>
@@ -692,8 +819,14 @@
                 
                 <!-- Feature 4 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="taleam.jpg" alt="تعليم متكامل" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="feature4">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="taleam.jpg" alt="تعليم متكامل 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="taleam2.jpeg" alt="تعليم متكامل 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('feature4', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('feature4', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature4', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature4', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">تعليم متكامل</h3>
@@ -703,8 +836,14 @@
                 
                 <!-- Feature 5 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="eshraf.png" alt="إشراف أكاديمي" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="feature5">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="eshraf.png" alt="إشراف أكاديمي 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="eshraf22.png" alt="إشراف أكاديمي 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('feature5', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('feature5', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature5', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature5', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">إشراف أكاديمي</h3>
@@ -714,8 +853,14 @@
                 
                 <!-- Feature 6 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="600">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="shbra.jpg" alt="خبرة عريقة" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="feature6">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="shbra.jpg" alt="خبرة عريقة 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="shbra2.png" alt="خبرة عريقة 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('feature6', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('feature6', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('feature6', 0)"></span><span class="carousel-dot" onclick="goToSlide('feature6', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">خبرة عريقة</h3>
@@ -801,8 +946,14 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service 1 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="ekama.jpg" alt="الإقامة" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="service1">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="ekama.jpg" alt="الإقامة 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="ekama2.png" alt="الإقامة 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('service1', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('service1', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service1', 0)"></span><span class="carousel-dot" onclick="goToSlide('service1', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">الإقامة</h3>
@@ -812,8 +963,14 @@
                 
                 <!-- Service 2 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="w.png" alt="الوجبات" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="service2">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="ww.png" alt="الوجبات 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="www.png" alt="الوجبات 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('service2', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('service2', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service2', 0)"></span><span class="carousel-dot" onclick="goToSlide('service2', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">الوجبات</h3>
@@ -823,8 +980,14 @@
                 
                 <!-- Service 3 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="nakl.jpg" alt="النقل" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="service3">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="nakl.jpg" alt="النقل 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="nakl2.png" alt="النقل 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('service3', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('service3', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service3', 0)"></span><span class="carousel-dot" onclick="goToSlide('service3', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">النقل</h3>
@@ -834,8 +997,14 @@
                 
                 <!-- Service 4 -->
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#F7A716]" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-full h-64 overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        <img src="news_xaptudvbp6.jpg" alt="العمرة والزيارات" class="w-full h-full object-cover">
+                    <div class="h-64 image-carousel" data-carousel="service4">
+                        <div class="carousel-images">
+                            <div class="carousel-image"><img src="news_xaptudvbp6.jpg" alt="العمرة والزيارات 1" class="w-full h-full object-cover"></div>
+                            <div class="carousel-image"><img src="omra2.png" alt="العمرة والزيارات 2" class="w-full h-full object-cover"></div>
+                        </div>
+                        <button class="carousel-arrow next" onclick="moveCarousel('service4', -1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+                        <button class="carousel-arrow prev" onclick="moveCarousel('service4', 1)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+                        <div class="carousel-dots"><span class="carousel-dot active" onclick="goToSlide('service4', 0)"></span><span class="carousel-dot" onclick="goToSlide('service4', 1)"></span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-gray-800 mb-4 text-center">العمرة والزيارات</h3>
@@ -1243,20 +1412,12 @@
             <div class="border-t border-gray-800 my-8"></div>
             
             <!-- Bottom Section -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                 <!-- Copyright -->
-                <div class="text-center md:text-right">
+                <div class="text-center">
                     <p class="text-gray-400">
                         © 2025 <span class="text-white font-bold">وكالة الأهرام للسفر والسياحة</span> - جميع الحقوق محفوظة
                     </p>
-                </div>
-                
-                <!-- Partner -->
-                <div class="flex items-center gap-3">
-                    <span class="text-gray-400 text-sm">بالشراكة مع</span>
-                    <div class="bg-gradient-to-r from-[#F7A716] to-[#FDB022] px-6 py-2 rounded-lg shadow-lg">
-                        <span class="text-white font-black text-lg">MyHotels.SA</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1364,6 +1525,64 @@
                 }
             });
         });
+        
+        // Image Carousel Functions
+        const carousels = {};
+        
+        function initCarousels() {
+            document.querySelectorAll('[data-carousel]').forEach(carousel => {
+                const id = carousel.getAttribute('data-carousel');
+                carousels[id] = {
+                    element: carousel,
+                    currentSlide: 0,
+                    totalSlides: carousel.querySelectorAll('.carousel-image').length
+                };
+                
+                // Auto-play carousel
+                if (carousels[id].totalSlides > 1) {
+                    setInterval(() => {
+                        moveCarousel(id, 1);
+                    }, 4000);
+                }
+            });
+        }
+        
+        function moveCarousel(carouselId, direction) {
+            const carousel = carousels[carouselId];
+            if (!carousel) return;
+            
+            carousel.currentSlide = (carousel.currentSlide + direction + carousel.totalSlides) % carousel.totalSlides;
+            updateCarousel(carouselId);
+        }
+        
+        function goToSlide(carouselId, slideIndex) {
+            const carousel = carousels[carouselId];
+            if (!carousel) return;
+            
+            carousel.currentSlide = slideIndex;
+            updateCarousel(carouselId);
+        }
+        
+        function updateCarousel(carouselId) {
+            const carousel = carousels[carouselId];
+            if (!carousel) return;
+            
+            const imagesContainer = carousel.element.querySelector('.carousel-images');
+            const dots = carousel.element.querySelectorAll('.carousel-dot');
+            
+            imagesContainer.style.transform = `translateX(${carousel.currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                if (index === carousel.currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialize carousels when page loads
+        window.addEventListener('load', initCarousels);
     </script>
 </body>
 </html>
